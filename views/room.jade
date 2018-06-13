@@ -34,7 +34,7 @@ block content
                         tr.tableListItem(ng-repeat="table in tableList").container
                             td(ng-click="redirect(table.idTable)")
                                 div.gameType.row
-                                    strong.mx-auto {{table.gameName}}
+                                    strong.mx-auto {{table.gameName}} {{(table.gameTime/60)+"min"}}
                                 div.d-flex.justify-content-around
                                     div.p-2(ng-repeat="i in range(0,table.numberOfPlayers)")
                                         |{{table['seat'+i]==0? 'empty':table['seatName'+i]}}
