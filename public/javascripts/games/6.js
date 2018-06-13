@@ -1,12 +1,22 @@
 var board,
     g = new Chess(),
-    statusEl = $('#status'),
-    fenEl = $('#fen'),
-    pgnEl = $('#pgn');
+    statusEl,
+    fenEl,
+    pgnEl;
 
 // do not pick up pieces if the game is over
 // only pick up pieces for the side to move
 var onDragStart = function(source, piece, position, orientation) {
+
+    var czyNaRuchu=true;
+    angular.element('[ng-controller=table]').scope().$apply(function(scope){
+        var turn=g.turn()=='w'?'0':'1';
+        if(scope.table['seat'+turn]!==userId||scope.table['inProgress']=='0') {
+            czyNaRuchu = false;
+        }
+    });
+    if(!czyNaRuchu)
+        return false;
     if (g.game_over() === true ||
         (g.turn() === 'w' && piece.search(/^b/) !== -1) ||
         (g.turn() === 'b' && piece.search(/^w/) !== -1)) {
@@ -85,15 +95,16 @@ var game={
 
     initGame:function () {
         board = ChessBoard('board1', cfg);
+        statusEl = $('#status'),
+            fenEl = $('#fen'),
+            pgnEl = $('#pgn');
         updateStatus();
     },
     move:function(move){
         makeMove(move);
     },
     playersOnMove:function(position){
-       if(g.turn() === 'b')
-           return 1;
-       return 0;
+       return g.turn()=='w'?[0]:[1];
     },
     load:function(position){
         g.load(position);
