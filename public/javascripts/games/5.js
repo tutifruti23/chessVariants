@@ -66,5 +66,7 @@ var game={
             "            <td class=\"pole\"></td>\n" +
             "            </tr>\n" +
             "            </table>";
+    },rotateBoardForPlayer:function(numberOfSeat){
+
     }
 }

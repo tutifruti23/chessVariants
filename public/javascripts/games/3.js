@@ -77,5 +77,7 @@ var game={
             "\t\t\t</tr>\n" +
             "\t\t  </table>";
 
+    },rotateBoardForPlayer:function(numberOfSeat){
+
     }
 }

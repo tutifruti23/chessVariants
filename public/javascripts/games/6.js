@@ -116,5 +116,10 @@ var game={
             "<p>Status: <span id=\"status\"></span></p>\n" +
             "<p>FEN: <span id=\"fen\"></span></p>\n" +
             "<p>PGN: <span id=\"pgn\"></span></p>";
+    },rotateBoardForPlayer:function(numberOfSeat){
+        if(numberOfSeat==1){
+            board.orientation('black');
+        }else if(numberOfSeat==0)
+            board.orientation('white');
     }
 }

@@ -56,6 +56,7 @@ function updateTable(tableData){
     });
 }
 function setNrMySeat(tableData){
+    var actSeat=mySeat;
     mySeat=-1;
     for(var i=0;i<tableData.numberOfPlayers;i++){
         if(tableData['seat'+i]==userId){
@@ -63,6 +64,8 @@ function setNrMySeat(tableData){
             break;
         }
     }
+    if(mySeat!=-1&&actSeat!=mySeat)
+        game.rotateBoardForPlayer(mySeat);
 }
 
 var myApp=angular.module("myApp",[]);
