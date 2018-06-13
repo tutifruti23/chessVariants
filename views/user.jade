@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    each item in users
+
+                h2 Twój profil
+
+                form(action='/user' method='post')
+                    .form-group
+                        label(for='usr') Imię
+                        input#usr.form-control(type='text', name='nick', value='#{item[3]}')
+                    .form-group
+                        label(for='email') Email address
+                        input#email.form-control(type='email', name='mail', aria-describedby='emailHelp', value='#{item[1]}', required)
+                    .form-check
+                        label(for='pwd') Hasło:
+                        input#pwd.form-control(type='password', name='pass', value='#{item[2]}', required)
+                        br
+                        button.btn.btn-primary(type='submit') Zaktualizuj
+

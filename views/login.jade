@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    div.container
+        .row.centered-form
+
+        div.row.content.vdivide
+            div.col-sm
+                h3.center.header Nie masz konta? <br> Zarejestruj się!
+                    .panel-body
+                        form#register-form
+                            .form-group
+                                input.form-control.input-sm(type='text', name='displayName', aria-describedby='nameHelp', placeholder='Nazwa')
+                            .form-group
+                                input.form-control.input-sm(type='email', name='email', aria-describedby='emailHelp', placeholder='Adres e-mail')
+                            .row
+                                .col-xs-6.col-sm-6.col-md-6
+                                    .form-group
+                                        input#password.form-control.input-sm(type='password', name='password', aria-describedby='passwordHelp', placeholder='Hasło')
+                                .col-xs-6.col-sm-6.col-md-6
+                                    .form-group
+                                        input#passwordConfirm.form-control.input-sm(type='password', name='passwordConfirm', placeholder='Potwierdz')
+                            button.btn.btn-primary.btn-block#submit-register Rejestruj
+            div.col-sm
+                h3.center.header Zaloguj się!
+                    form#login-form
+                        .form-group
+                            input#exampleInputEmail1.form-control(type='text', aria-describedby='loginHelp', placeholder='E-mail', name = 'email')
+                        .form-group
+                            input#exampleInputPassword1.form-control(type='password', placeholder='Hasło', name = 'password')
+                        button.btn.btn-primary.btn-block#submit-login Loguj
+                div.g-signin2(data-onsuccess='onSignIn')
+

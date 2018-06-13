@@ -1,0 +1,44 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name='google-signin-client_id', content='214047882990-osb04o52j7bdnnl68uu0imp3jkpfnfue.apps.googleusercontent.com')
+        title= title
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', crossorigin='anonymous')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+
+        script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+        script(src='/javascripts/games/tictactoe.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/tictactoe.css')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/room.css')
+
+    body.bg-light
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://apis.google.com/js/platform.js')
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo03', aria-controls='navbarTogglerDemo03', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            a.navbar-brand(href='/')
+                img.d-inline-block.align-top(src='/images/logo.png', width='30', height='30', alt='')
+                |     Stajnia
+
+            #navbarTogglerDemo03.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+                    li.nav-item
+                        a.nav-link(href='/room') Room
+            a(id='logLink' href='/login')
+                button.btn.btn-outline-primary.my-2.my-sm-0(id='logBtn') Zaloguj się
+            a(id='logoutLink' )
+                button.btn.btn-outline-primary.my-2.my-sm-0(id='logoutBtn' onclick="signOut()" ) Wyloguj się
+
+        div#bg-main.container
+            block content
+    script(src="/javascripts/script.js")
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+
+

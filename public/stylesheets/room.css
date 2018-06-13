@@ -1,0 +1,55 @@
+#chat{
+    min-height:75vh;
+    height:75vh;
+    max-height:75vh;
+}
+#output{
+    background: white;
+    height: 100%;
+    overflow-y:scroll;
+}
+#message{
+
+
+}
+#chatutil{
+    width:100%;
+}
+#board{
+    position:absolute;
+    display:none;
+
+}
+.tableListItem{
+    height:50px;
+    border-bottom:1px solid gray;
+
+}
+.tableListItem:hover{
+    cursor:pointer;
+    background-color: silver;
+    opacity:0.5;
+}
+#tableTable{
+    min-height:75vh;
+    height:75vh;
+    max-height:75vh;
+    overflow-y: scroll;
+    display:block;
+
+    border-radius:10px;
+}
+#tableTable tbody{
+    display:table;
+}
+#usersTable{
+    min-height:75vh;
+    height:75vh;
+    max-height:75vh;
+    overflow-y: scroll;
+    display:block;
+}
+#availableUsers{
+    display:none;
+
+}

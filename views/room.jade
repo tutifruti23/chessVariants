@@ -1,0 +1,55 @@
+extends layout
+
+block content
+    script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js')
+    script(src='javascripts/roomLayout.js')
+    script.
+        var userName = "#{name}";
+        var userId = "#{userId}";
+
+    div(ng-app='myApp')#conRoom.container
+        //#witaj Witaj #{name}
+        div.row
+            div.col-9
+                button.btn.btn-primary#newGame Nowy Stół
+                select#idGame
+                    each item in gamesList
+                        option(value='#{item[0]}') #{item[1]}
+            div.col-3
+                button.btn.btn-info#changeToUsersList
+                    |Users
+                button.btn.btn-info.disabled#changeToChat
+                    |Chat
+        div.row
+            div#tables(ng-controller='tableList').col-9
+                table#tableTable.col-12
+                    tbody.col-12
+                        tr.tableListItem(ng-repeat="table in tableList").container
+                            td(ng-click="redirect(table.idTable)")
+                                div.gameType.row
+                                    strong.mx-auto {{table.gameName}}
+                                div.d-flex.justify-content-around
+                                    div.p-2(ng-repeat="i in range(0,table.numberOfPlayers)")
+                                        |{{table['seat'+i]==0? 'empty':table['seatName'+i]}}
+            div(ng-controller='listaUzytkownikow')#availableUsers.col-3
+                      h6 Dostepni uzytkownicy:
+                      table#usersTable
+                          tr(ng-repeat="user in listaUserow")
+                            td
+                              | {{user.userName}}
+            div#chat.col-3.container
+                #output
+                #chatutil
+                    .input-group.mb-3
+                        input#message.form-control(type='text', placeholder='message')
+                        .input-group-append
+                            button#send.btn.btn-outline-secondary(type='button') Send
+                    //input#message(type='text', placeholder='message')
+                    //button#send Send
+            //h4 Wybierz grę
+
+
+    script(src='/javascripts/room.js')
+    script(src='/javascripts/roomPlansza.js')
+

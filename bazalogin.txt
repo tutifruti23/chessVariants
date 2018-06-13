@@ -1,0 +1,3 @@
+https://serwer1784051.home.pl/psql/
+login 25952734_zpi
+haslo ZPI2018*

@@ -1,0 +1,213 @@
+body {
+  padding: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.center{
+  text-align: center;
+}
+#password-error{
+  color: red;
+}
+
+#games-card-elem{
+  width: 18rem;
+  height: 30rem;
+  pointer-events: none;
+}
+
+#games-card-image{
+  height: 18rem;
+}
+
+#logoutLink{
+  display:none;
+}
+
+#mainSlideShow{
+  margin: auto;
+  width: 50%;
+  height: 200px;
+  border: 3px solid green;
+  padding: 0;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.navLinks{
+  text-align: center;
+}
+
+.content{
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+
+.header{
+  color: #0c78a6;
+  text-shadow: 0px 0px 3px#109ad5;
+}
+.list{
+  color: #109ad5;
+  list-style: none;
+}
+#bg-main{
+  width: 99%;
+  margin-top: 2%;
+  border: 2px solid #c0c0c0;
+  background-color: #f2f2f2;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+#carouselExampleControls{
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+.navbar{
+ font-size: 130%;
+}
+
+#navbarTogglerDemo03:hover{
+  color: #0c78a6;
+}
+
+input[type~=text] {
+  -webkit-transition: box-shadow .3s ease-in-out;
+  transition: box-shadow .3s ease-in-out;
+}
+#register-form, #login-form{
+  margin-top: 4%;
+}
+.row.vdivide [class*='col-']:not(:last-child):after {
+  background: #e0e0e0;
+  width: 1px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#plansza{
+  
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+}
+.pole{
+  min-height:100px;
+  height:100px;
+  min-width:100px;
+  font-size:70px;
+  text-align:center;
+  border:1px solid black;
+}
+
+.br{
+  border: silver 1px solid;
+  border-radius: 20px;
+}
+.player{
+  font-size: 170%;
+  font-weight: bolder;
+}
+points{
+  font-weight: 900;
+}
+table{
+  margin-top:5%;
+  margin-bottom: 4%;
+  height: 100%;
+  width: 100%;
+}
+.field{
+  height: 100px;
+  width: auto;
+}
+.field1{
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+.field3{
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+}
+.field7{
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+ }
+.field9{
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+}
+.field5{
+  border: 2px solid black;
+}
+#config-textarea{
+  width:100%;
+  height:300px;
+}
+#new-game-desc{
+  width:100%;
+  height:150px
+}
+
+#update-game-desc {
+  width:100%;
+  height:100px
+}
+
+
+/*game*/
+.timer{
+  margin-top:20px;
+  font-size:20px;
+  text-align: center;
+  font-weight: bolder;
+}
+.points{
+  margin-top:20px;
+  font-size:20px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.btn-away{
+  margin-top:20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  white-space: normal;
+
+}
+.btn-away:hover{
+  box-shadow: 0 0 15px #b71d1d;
+
+}
+
+.btn-sit{
+  margin:10px;
+}
+.btn-ready:hover{
+  box-shadow: 0 0 4px #25751e;
+}
+.gameTitle{
+  font-family: 'Abril Fatface';
+}
+.row{
+  margin-top: 10px;
+}
+.status{
+  color: silver;
+  font-style: italic;
+  font-size: 15px;
+}
+.playerReady{
+  margin-top:5%;
+  border-radius:5px;
+}

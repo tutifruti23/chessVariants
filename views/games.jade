@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    div.row.mt-3.mb-3#all-games
+        each item in gamesList
+            div.col-sm-6.one-elem-container(id='game'+(item[0]))
+                div.d-inline#games-card-elem
+                    .card
+                        img.card-img-top#games-card-image(src='#{item[3]}',)
+                        .card-body
+                            h5.card-title #{item[1]}
+                            p.card-text #{item[2]}
+
+

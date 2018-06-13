@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    h3 welcome to cms
+    div.container
+        div.row
+            div.col
+                div
+                    h3 Choose game and change config
+                    ul.gamesList.list-group
+                        each item,i in gamesList
+                            li.list-group-item(id='cmsgame'+(item[0]))= item
+                div
+                    h3 Grant admin rights
+                    form#grant-admin-form
+                        input.form-control.input-sm(type='email', name='email', aria-describedby='emailHelp', placeholder='Adres e-mail')
+                        button.btn.btn-primary#submit-grant-admin Grant Admin
+                    h3 Revoke admin rights
+                        form#revoke-admin-form
+                            input.form-control.input-sm(type='email', name='email', aria-describedby='emailHelp', placeholder='Adres e-mail')
+                            button.btn.btn-primary#submit-revoke-admin Revoke Admin
+                div
+                    h3 Add new game
+                    p.mt-1 Name:
+                    input.input-sm.form-control#new-game-name
+                    p.mt-1 Description:
+                    textarea.mt-1#new-game-desc
+                    button.btn.btn-primary.mt-1.d-block#add-button Add new Game
+            div.col-sm
+                div#cms-game-details
+                    h3#game-title
+                    p.mt-1 Name:
+                    input.input-sm.form-control#update-game-name
+                    p.mt-1 Description:
+                    textarea.mt-1#update-game-desc
+                    button.btn.btn-primary.mt-1.d-block#update-game-button Update Game
+                    textarea.mt-2#config-textarea
+                    button.btn.btn-primary.mt-1.d-block#save-config-button Save Config
+                    button.btn.btn-primary.mt-1.d-block#activate-button
+                    button.btn.btn-danger.mt-1.d-block#delete-button Delete Game
+
+    script(src="/javascripts/cms.js")

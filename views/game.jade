@@ -1,0 +1,41 @@
+extends layout
+
+block content
+    link(href='https://fonts.googleapis.com/css?family=Abril Fatface', rel='stylesheet')
+    script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js')
+    script.
+        var idTable ="#{idTable}";
+        var userName ="#{name}";
+        var userId="#{userId}";
+    script(src='/javascripts/game.js')
+    script(src='/javascripts/games/#{idGame}.js')
+    div.container(ng-app='myApp' ng-controller='table')
+
+        .row
+            .col-9.center
+                h1.gameTitle {{table.gameName}}
+                h2.gameTitle.status {{status()}}
+                h2 {{table.info}}
+                #plansza
+            .col-3.br
+                div.playerSit(ng-repeat="i in range(0,table.numberOfPlayers)")
+                    div.d-flex.justify-content-center
+                        div.p-2.player {{table['seat'+i]==0?'empty':table['seatName'+i]}}
+                        div.p-2.playerReady(style="background-color:{{isReady(i)}};height:10px;width:10px;border:1px solid black")
+                    div.d-flex.justify-content-center
+                        button.btn.btn-primary.btn-md(ng-click='seat(i)')
+                            |Usiądź
+                        button.btn.btn-success.btn-md(ng-click='playerIsReady(i)')
+                            |Start
+                        button.btn.btn-danger.btn-md(ng-click='standUp()')
+                            |Wstań
+                    div.timer.col-12
+                        |{{playerTimer(i)}}
+                    hr
+
+
+        .row
+            .col-9
+                h3.center.result.gameTitle Rezultat gry:
+            .col-3
