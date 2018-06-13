@@ -41,7 +41,7 @@ router.post('/logindata', function(req, res) {
 router.post('/register', function (req,res) {
     console.log(req.body);
     loginController.validateDataRegister(req.body,function callback(token,data) {
-        if(token != null) {
+        /*if(token != null) {
             req.session.userData=data;
             req.session.token = token;
             res.cookie('token', token, {
@@ -54,11 +54,12 @@ router.post('/register', function (req,res) {
                 httpOnly: false,
                 secure: (process.env.SECURE_COOKIES == 'true') //trick to swap string to bool
             });
-            console.log('dsds');
+
             res.send(true);
         }else{
             res.send(false);
-        }
+        }*/
+        res.send(data);
     });
 });
 

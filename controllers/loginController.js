@@ -16,20 +16,7 @@ exports.validateDataLogin = function(email,password,validateDataHandler){
     if(validateEmail.validateEmail(email) && password.length>=PASSWORD_LENGTH) {
         loginModel.validateDataLogin(email, password, function callback(result, data) {
             if(result==true) {
-                jwt.sign({
-                        id: data.id,
-                        name: data.name,
-                        admin: data.admin
-                    },
-                    process.env.SECRET, {
-                        expiresIn: 86400 // expires in 24 hours
-                    }, function (err, token) {
-                        if (err) {
-                            console.log(err);
-                        }
-
-                        validateDataHandler(token, data)
-                    });
+                validateDataHandler(true, data)
             }else{
                 validateDataHandler(null,null);
             }
@@ -44,21 +31,11 @@ exports.validateDataRegister = function(data,validateDataHandler) {
     if(validatePassword.isValidPassword(data.password)){
         loginModel.validateDataRegister(data.displayName, data.email, data.password,false, function callback(result, data) {
             if(result==true) {
-                jwt.sign({
-                        id: data.id,
-                        name: data.name,
-                        admin: data.admin
-                    },
-                    process.env.SECRET, {
-                        expiresIn: 86400 // expires in 24 hours
-                    }, function (err, token) {
-                        if (err) {
-                            console.log(err);
-                        }
-                        validateDataHandler(token, data)
-                    });
+                data.isValid=true;
+                validateDataHandler(true, data)
+
             }else{
-                validateDataHandler(null,null);
+                validateDataHandler(false,null);
             }
         });
     }else  validateDataHandler(false, null);

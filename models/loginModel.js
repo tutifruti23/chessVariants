@@ -43,6 +43,7 @@ exports.validateDataRegister = function(name,email,password,fromGoogle,handleVal
                     handleValidateData(true,data);
                 });
             }else {
+                console.log("konto istnieje");
                  handleValidateData(false,null);
             }
         }
