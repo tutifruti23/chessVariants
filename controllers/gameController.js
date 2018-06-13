@@ -1,3 +1,4 @@
+var chess = require('chess').Chess;
 exports.gameController={
     '1':{
         startPosition:function(){return "0000000001";},
@@ -472,6 +473,46 @@ exports.gameController={
             newPosition+=turn;
             console.log(newPosition);
             return newPosition;
+        }
+    },
+    '6':{
+        startPosition:function(){
+            var Chess = require('chess.js').Chess;
+            var chess = new Chess();
+
+
+            return chess.fen();},
+        startInfo:function(){return "";},
+        firstUsersOnMove:function(){return [0]},
+        numberOfPlayers:function(){return 2},
+        playerTimeout:function(position,i,callback){
+
+            callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
+        },
+        makeMove:function(move,nrPlayer,position,callback){
+            var Chess = require('chess.js').Chess;
+            var chess = new Chess();
+            chess.load(position);
+            var turn=chess.turn()=='w'?0:1;
+            if(turn==nrPlayer){
+                var m=chess.move(move);
+                if(m!=null){
+                    var info="";
+                    var gOver=chess.game_over()?1:0;
+                    turn=chess.turn()=='w'?0:1;
+                    console.log(chess.fen());
+                    callback({change:true,position:chess.fen(),gameOver:gOver,info:info,playersOnMove:[turn]});
+                }else
+                    callback({change:false});
+
+
+            }
+            else{
+
+                callback({change:false});
+            }
+
+
         }
     }
 };

@@ -2,6 +2,7 @@ var socket;
 var mySeat=-1;
 window.addEventListener('load',function(){
     document.getElementById("plansza").innerHTML=game.layout();
+    game.initGame();
     socket=io();
     socket.on("connect",function(){
         socket.emit("newUserTable",{idTable:idTable,userId:userId,socketId:socket.id});
@@ -192,10 +193,6 @@ function makeMove(move){
         });
     }
 }
-window.addEventListener("load",function(){
-    game.initGame();
-
-});
 
 
 

@@ -8,6 +8,8 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "bufferutil": "3.0.5",
+    "chess": "^0.3.3",
+    "chess.js": "^0.10.2",
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.9",
     "dotenv": "^5.0.1",
