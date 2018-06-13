@@ -53,7 +53,7 @@ myApp.controller('tableList',['$scope', '$window', function($scope, $window){
 
 
 window.addEventListener("load",function(){
-    socket=io.connect(window.location.hostname+":48854");
+    socket=io();
 
     socket.on("connect",function(){
         socket.emit("newUser",{userId:userId,userName:userName,socketId:socket.id});

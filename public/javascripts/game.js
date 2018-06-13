@@ -2,7 +2,7 @@ var socket;
 var mySeat=-1;
 window.addEventListener('load',function(){
     document.getElementById("plansza").innerHTML=game.layout();
-    socket=io.connect(window.location.hostname+":48854");
+    socket=io();
     socket.on("connect",function(){
         socket.emit("newUserTable",{idTable:idTable,userId:userId,socketId:socket.id});
         socket.emit("getTableData",{idTable:idTable});
