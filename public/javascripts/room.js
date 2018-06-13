@@ -108,8 +108,10 @@ window.addEventListener("load",function(){
     document.getElementById("newGame").addEventListener("click",function(){
 
         var idGame=document.getElementById('idGame').value;
+        var time=document.getElementById('timeGame').value;
             socket.emit("createNewTable", {
-                idGame: idGame
+                idGame: idGame,
+                time:time
             });
 
     });

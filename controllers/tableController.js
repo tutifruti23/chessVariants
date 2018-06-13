@@ -32,12 +32,12 @@ var gameControllers=gameController.gameController;
             callback(data);
         });
     }
-    function setFreeSeat(tableKey,number){
+    function setFreeSeat(tableKey,number,time){
         for(var i=0;i<number;i++){
             redisController.setMapKey(tableKey,'seat'+i,0);
             redisController.setMapKey(tableKey,'seatReady'+i,0);
             redisController.setMapKey(tableKey,'seatName'+i,"");
-            redisController.setMapKey(tableKey,'seatTime'+i,300000);
+            redisController.setMapKey(tableKey,'seatTime'+i,time*1000);
         }
     }
 
@@ -260,12 +260,13 @@ var gameControllers=gameController.gameController;
     exports.tableData=tableData;
     exports.addNewTable=function(boardData,callback){
         var idGame=boardData.idGame;
+        var timeGame=boardData.time;
         var numberOfPlayersInGame=gameControllers[idGame].numberOfPlayers();
         var idTable = uniqid();
         gameData.gameData(idGame,function (gameData)
         {
             redisController.setMapKey(idTable, 'numberOfPlayers', numberOfPlayersInGame);
-            setFreeSeat(idTable, numberOfPlayersInGame);
+            setFreeSeat(idTable, numberOfPlayersInGame,timeGame);
             redisController.setMapKey(idTable, 'idTable', idTable);
             redisController.setMapKey(idTable, 'inProgress', 0);
             redisController.setMapKey(idTable, 'idGame', idGame);
@@ -273,7 +274,7 @@ var gameControllers=gameController.gameController;
             redisController.setMapKey(idTable, 'position', '0000000001');
             redisController.addToList('tableList', idTable);
             redisController.setMapKey(idTable,'gameName',gameData.name);
-            redisController.setMapKey(idTable,'gameTime',300);
+            redisController.setMapKey(idTable,'gameTime',timeGame);
             callback(idTable);
         });
     };
