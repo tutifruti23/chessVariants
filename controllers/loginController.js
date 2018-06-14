@@ -57,12 +57,12 @@ exports.loginGoogle = async function(token, callback){
       name:name,
       email:email,
     };
-    loginModel.validateDataRegister(data.name,data.email,' ',true, function (result,data) {
+    loginModel.validateDataRegister(data.name,data.email,' ',true, function (result,userInfo) {
 
         jwt.sign({
-                id: userid,
-                name: name,
-                admin: false
+                id: userInfo.id,
+                name: userInfo.name,
+                admin: userInfo.admin
             },
             process.env.SECRET, {
                 expiresIn: 86400 // expires in 24 hours
