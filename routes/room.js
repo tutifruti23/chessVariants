@@ -7,7 +7,7 @@ var jwtDecode = require('../modules/jwtDecode');
 router.get('/', function(req, res, next) {
 
      if(req.session.userData){
-       gamesController.findAllGames(function (data) {
+       gamesController.allActiveGames(function (data) {
              res.render('room', { title: 'Stajnia - gry', gamesList:data, name:req.session.userData.name,userId:req.session.userData.id});
         });
      }

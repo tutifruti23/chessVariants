@@ -2,7 +2,11 @@ var games = require('../models/gamesModel');
 var gameData = require('../models/gameData');
 exports.findAllGames = function (callback) {
     games.selectAllGames(function (data) {
-        console.log(data);
+        callback(data);
+    });
+};
+exports.allActiveGames = function (callback) {
+    games.allActiveGames(function (data) {
         callback(data);
     });
 };
