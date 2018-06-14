@@ -31,3 +31,20 @@ exports.gameData=function(idGame,callback){
         };
     });
 };
+exports.gameConfig=function(idGame,callback){
+    var query = "SELECT * FROM configurations where available_games_id=$1";
+    db.query(query,[idGame], function (err, res) {
+        if (err) {
+            console.log('querry err ', err);
+        } else {
+
+            if (res.rowCount > 0) {
+                var gameData = {
+                    idGame: res.rows[0].id,
+                    config: res.rows[0]['config']
+                };
+                callback(gameData);
+            }
+        };
+    });
+};
