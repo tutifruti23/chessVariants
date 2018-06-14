@@ -49,7 +49,6 @@ var gameControllers=gameController.gameController;
     }
     exports.setUnreadSeats=setUnreadySeats;
     function standUpFromTable(data,callback){
-        console.log(data);
         tableData(data.idTable,function(response){
             var canStandUp=false;
             var index=0;
@@ -62,9 +61,6 @@ var gameControllers=gameController.gameController;
                 }
             }
             if(canStandUp){
-                console.log('here');
-                console.log(data.idTable);
-                console.log(index);
                 redisController.setMapKey(data.idTable,'seat'+index,0);
                 redisController.setMapKey(data.idTable,'seatReady'+index,0);
                 redisController.setMapKey(data.idTable,'seatName'+index,"");
@@ -90,15 +86,12 @@ var gameControllers=gameController.gameController;
                     }
                 }
                 if (allReady) {
-                    console.log("gra start");
                     redisController.getMapValue(idTable, 'gameTime', function (time) {
                         redisController.getMapValue(idTable, 'numberOfPlayers', function (numOfPlayers) {
-                            console.log(numOfPlayers);
                             initClocks(idTable, time, numOfPlayers);
                             redisController.setMapKey(idTable, 'position', gameControllers[response['idGame']].startPosition());
                             redisController.setMapKey(idTable, 'info', gameControllers[response['idGame']].startInfo());
                             redisController.setMapKey(idTable, 'inProgress', 1);
-                            console.log(gameControllers[response['idGame']].firstUsersOnMove());
                             changeUsersOnMove(idTable, gameControllers[response['idGame']].firstUsersOnMove());
                             callback();
                         });
@@ -123,12 +116,10 @@ var gameControllers=gameController.gameController;
         }
         var st=new Stopwatch(time,options);
         st.onDone(function(){
-            console.log("sprawdzam stoly");
             redisController.getList('tableList',function(tables){
                 tables.forEach(function(tableId){
                     tableData(tableId,function(table){
                        if(isEmptyTable(table)){
-                           console.log("stol pusty");
                            var stTab=new Stopwatch(tableTime,tableTimerOptions);
                            stTab.onTime(function(){
                                tableData(tableId,function(tab){
@@ -172,8 +163,6 @@ var gameControllers=gameController.gameController;
         redisClient.sadd('listaSocketowTable',[userData.socketId]);
         redisClient.hset(['socket:'+userData.socketId,'userId',userData.userId]);
         redisClient.hset(['socket:'+userData.socketId,'idTable',userData.idTable]);
-        console.log("here");
-
     };
     exports.standUpFromTable=standUpFromTable;
     //data{
@@ -224,7 +213,6 @@ var gameControllers=gameController.gameController;
                 for (var i = 0; i < tableData.numberOfPlayers; i++) {
 
                     if (tableData['seat' + i] == idPlayer) {
-                        console.log(tableData['seat' + i]);
                         canPlayerSit = false;
                     }
                 }
@@ -326,7 +314,6 @@ var gameControllers=gameController.gameController;
 function changeUsersOnMove(idTable,usersOnMove){
     stopAllClocks(idTable);
     for(var i=0;i<usersOnMove.length;i++){
-        console.log("kto na ruchu"+usersOnMove[i])
         startClock(idTable,usersOnMove[i]);
     }
 }
@@ -334,12 +321,10 @@ function changeUsersOnMove(idTable,usersOnMove){
 function stopAllClocks(idTable) {
     var length = timers[idTable].length;
     for (var i = 0; i < length; i++) {
-        console.log("zegar" + i+" stop");
         timers[idTable][i].stop();
     }
 }
 function startClock(idTable,n){
-    console.log("startuje zegar"+ n);
     timers[idTable][n].start();
 }
 function timerInstance(time,idTable,i){
@@ -349,11 +334,9 @@ function timerInstance(time,idTable,i){
     }
     var timer=new Stopwatch(time,options);
     timer.onTime(function(time){
-        console.log(i+" "+time.ms);
         redisController.setMapKey(idTable,'seatTime'+i,time.ms);
     });
     timer.onDone(function(){
-        console.log("koniec czasu "+i);
         redisController.getMapValue(idTable,'position',function(position){
            redisController.getMapValue(idTable,'idGame',function(idGame){
               gameControllers[idGame].playerTimeout(position,i,function(dataPos){

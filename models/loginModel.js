@@ -24,7 +24,6 @@ exports.validateDataLogin = function(email,password,handleValidateData){
 };
 
 exports.validateDataRegister = function(name,email,password,fromGoogle,handleValidateData){
-    console.log(name);
     const Query = "SELECT email FROM users WHERE email = $1";
     const InsQuery="INSERT INTO users(id,email,password,name,avatar,admin,from_google) VALUES((SELECT (MAX(ID) + 1) FROM users),$1,$2,$3,'',false,$4) RETURNING id,name,admin";
    db.query(Query,[email], function (err,res){
@@ -34,7 +33,6 @@ exports.validateDataRegister = function(name,email,password,fromGoogle,handleVal
         } else{
             if(res.rowCount==0){
                 db.query(InsQuery,[email,password,name,fromGoogle],function (err,res) {
-                    console.log(res.rows[0]);
                     var data={
                         id:res.rows[0].id,
                         name:res.rows[0].name,
@@ -43,7 +41,6 @@ exports.validateDataRegister = function(name,email,password,fromGoogle,handleVal
                     handleValidateData(true,data);
                 });
             }else {
-                console.log("konto istnieje");
                  handleValidateData(false,null);
             }
         }

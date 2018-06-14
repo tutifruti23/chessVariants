@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 
      if(req.session.userData){
        gamesController.findAllGames(function (data) {
-           console.log('xd')
              res.render('room', { title: 'Stajnia - gry', gamesList:data, name:req.session.userData.name,userId:req.session.userData.id});
         });
      }

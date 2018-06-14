@@ -33,13 +33,11 @@ const returnController = function(io){
 
         });
         socket.on("newUserTable",function(data){
-            console.log("tutje");
             tableController.addConnectedUserToTable(data,function(){
 
             });
         });
         socket.on("disconnect",function(){
-            console.log("rozlaczylo");
             tableController.moveFromTableDisconnectedPlayer(socket.id,function(canStandUp,idTable){
                 io.sockets.emit("userDisconnected",socket.id);
                 redisController.userDisconnected(socket.id);
@@ -54,7 +52,6 @@ const returnController = function(io){
         });
         //table
         socket.on("createNewTable",function(data){
-            console.log("tworze stol");
             tableController.addNewTable(data,function(res){
                 tableController.tableData(res,function(response){
                     io.sockets.emit("newTableToList",response);
@@ -72,7 +69,7 @@ const returnController = function(io){
 
                 }
                 else{
-                    console.log("error, nie mozna usiasc");
+
                 }
 
 
@@ -81,10 +78,7 @@ const returnController = function(io){
         socket.on("standUp",function(data){
             tableController.standUpFromTable(data,function(canStandUp){
                 if(canStandUp){
-                    console.log("useerWstaje");
                     tableController.getAllTablesInfo(function(data){
-
-
                     })
                     tableController.tableData(data.idTable,function(table){
                         io.sockets.emit('updateTable',table);
@@ -100,8 +94,6 @@ const returnController = function(io){
                 if(isStartClicked){
                     tableController.isAllReadyPlayers(userAndBoardData.idTable,function(){
                         tableController.tableData(userAndBoardData.idTable,function(tableData){
-                            console.log(tableData);
-                            console.log("ktos wystartowal");
                             io.sockets.emit('game'+userAndBoardData.idTable,tableData);
                         });
                     });
@@ -125,7 +117,6 @@ const returnController = function(io){
         });
         socket.on("getTableData",function(data){
             tableController.tableData(data.idTable,function(tableData){
-                console.log(tableData);
                 socket.emit('game'+data.idTable,tableData);
             });
 

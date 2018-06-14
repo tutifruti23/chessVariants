@@ -21,12 +21,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function (req, res) {
     if(req.session.userData){
-        console.log(req.session.userData)
-
         nick = req.body.nick.replace(/\s/g, '');
-
         mail = req.body.mail.replace(/\s/g, '');
-        console.log(validateEmail.validateEmail('test@test.pl'));
         if(!validateEmail.validateEmail(mail)){
             res.redirect('../user');
         }

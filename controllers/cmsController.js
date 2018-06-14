@@ -22,7 +22,6 @@ exports.findAllGames = function (token, callback) {
             console.send(err);
         }else if (acces){
             cmsModel.findAllGames(function (data) {
-               console.log(data)
                callback(true,data);
             });
         }else {
@@ -60,7 +59,6 @@ exports.updateConfig = function (token,data, callback) {
         }else if (acces){
             if(validateJSON.isValidJSON(data.config)) {
                 cmsModel.updateConfig(data.id, data.config, function (data) {
-                    console.log(data);
                     callback(data);
                 });
             }else{
@@ -78,7 +76,6 @@ exports.changeActiveGame = function (token,data, callback) {
         if(err){
             console.send(err);
         }else if (acces){
-            console.log(data)
             cmsModel.changeActiveGame(data.id, data.active,function (data) {
                 callback(data);
             });
@@ -90,7 +87,6 @@ exports.changeActiveGame = function (token,data, callback) {
 
 exports.deleteGame = function (token,id, callback) {
     handleCmsConnection(token,function (err, acces) {
-        console.log('xd');
         if(err){
             console.send(err);
         }else if (acces){
@@ -108,7 +104,6 @@ exports.addNewGame = function (token,data, callback) {
         if(err){
             console.send(err);
         }else if (acces){
-            console.log(data)
             cmsModel.addNewGame(data.name, data.description,function (data) {
                 callback(data);
             });
@@ -139,7 +134,6 @@ exports.grantAdmin = function (token,email, callback) {
             console.send(err);
         }else if (acces){
             cmsModel.grantAdmin(email,function (data) {
-                console.log(data);
                 callback(data);
             });
         }else {
@@ -154,7 +148,6 @@ exports.revokeAdmin = function (token,email, callback) {
             console.send(err);
         }else if (acces){
             cmsModel.revokeAdmin(email,function (data) {
-                console.log(data);
                 callback(data);
             });
         }else {

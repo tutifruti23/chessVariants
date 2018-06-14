@@ -55,7 +55,6 @@ router.post('/addnewgame',function (req,res) {
     var token = req.cookies.token;
     if(token) {
         cmsController.addNewGame(token,req.body,function (result) {
-            console.log('redirtest');
             res.send(result);
         })
     }else{
@@ -67,7 +66,6 @@ router.post('/updategame',function (req,res) {
     var token = req.cookies.token;
     if(token) {
         cmsController.updateGame(token,req.body,function (result) {
-            console.log('redirtest');
             res.send(result);
         })
     }else{

@@ -188,7 +188,6 @@ exports.gameController={
             callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
         },
         makeMove:function(move,nrPlayer,position,callback){
-            console.log(move);
             nrPlayer++;
             var turn=position.charAt(36);
             if(nrPlayer==turn)
@@ -196,7 +195,6 @@ exports.gameController={
                 if(position.charAt(move)=='0') {
                     var index=move;
                     position =this.positionAfterMove(move,position,turn);
-                    console.log(position);
                     var over=this.gameOver(position);
                     var info="";
                     if(over!=0){
@@ -240,7 +238,6 @@ exports.gameController={
             }
             return koniec;
         },positionAfterMove:function (move,position,turn) {
-            console.log("cos");
             var plansza=[];
             var rozmiar=36;
             move=parseInt(move);
@@ -262,7 +259,6 @@ exports.gameController={
             }
             pelno=true;
             for(var i=parseInt((move/6))*6;i<parseInt((move/6))*6+6;i++){
-                console.log(i+" ");
                 if(plansza[i]==0){
                     pelno=false;
                 }

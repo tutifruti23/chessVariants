@@ -42,7 +42,7 @@ pg.connectToServer(function () {
 
     var gameModel=require('./models/gameData');
     gameModel.configs(function(response){
-       console.log(response);
+
     });
 
     var redisController=require('./controllers/redisController');

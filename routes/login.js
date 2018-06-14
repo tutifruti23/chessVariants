@@ -39,7 +39,6 @@ router.post('/logindata', function(req, res) {
 });
 
 router.post('/register', function (req,res) {
-    console.log(req.body);
     loginController.validateDataRegister(req.body,function callback(token,data) {
         /*if(token != null) {
             req.session.userData=data;
@@ -65,7 +64,7 @@ router.post('/register', function (req,res) {
 
 router.post('/googleLogin', function( req, res){
     loginController.loginGoogle(req.body.idToken, function (token, data) {
-
+        console.log("to token "+req.body.idToken)
         if(token != null) {
             req.session.userData=data;
             req.session.token = token;

@@ -23,7 +23,6 @@ exports.userDisconnected=function(socketId){
 //list boards
 exports.getValue=function(key,callback){
     redisClient.get(key,function(err,res){
-        console.log("res:"+res);
         if(!err)
         callback(res);
     });
