@@ -3,7 +3,7 @@ var validateEmail = require('../modules/validateEmail');
 var validatePassword=require("../modules/validatePassword");
 var jwt = require('jsonwebtoken');
 
-const CLIENT_ID = '1075415009326-ud16atsu14tjommm5t7q1vaa2lpgef8p.apps.googleusercontent.com';
+const CLIENT_ID = '1075415009326-dp5cbu3i5fhv648h1ppofnl64478dtoo.apps.googleusercontent.com';
 
 const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client(CLIENT_ID);
