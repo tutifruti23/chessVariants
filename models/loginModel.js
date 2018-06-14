@@ -32,16 +32,23 @@ exports.validateDataRegister = function(name,email,password,fromGoogle,handleVal
             handleValidateData(false,null);
         } else{
             if(res.rowCount==0){
-                db.query(InsQuery,[email,password,name,fromGoogle],function (err,res) {
-                    var data={
-                        id:res.rows[0].id,
-                        name:res.rows[0].name,
-                        admin:res.rows[0].admin
-                    };
-                    handleValidateData(true,data);
+                db.query(InsQuery,[email,password,name,fromGoogle],function (err2,res2) {
+                    db.query(Query,[email], function (err1,res1){
+                        var data={
+                            id:res1.rows[0].id,
+                            name:res1.rows[0].name,
+                            admin:res1.rows[0].admin
+                        };
+                        handleValidateData(true,data);
+                    });
                 });
             }else {
-                 handleValidateData(false,null);
+                var data={
+                    id:res.rows[0].id,
+                    name:res.rows[0].name,
+                    admin:res.rows[0].admin
+                };
+                handleValidateData(true,data);
             }
         }
     });
