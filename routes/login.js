@@ -64,7 +64,8 @@ router.post('/register', function (req,res) {
 
 router.post('/googleLogin', function( req, res){
     loginController.loginGoogle(req.body.idToken, function (token, data) {
-        console.log("to token "+token);
+        console.log("to data "+data);
+
         if(token != null) {
             req.session.userData=data;
             req.session.token = token;
