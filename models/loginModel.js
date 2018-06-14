@@ -24,7 +24,7 @@ exports.validateDataLogin = function(email,password,handleValidateData){
 };
 
 exports.validateDataRegister = function(name,email,password,fromGoogle,handleValidateData){
-    const Query = "SELECT email FROM users WHERE email = $1";
+    const Query = "SELECT * FROM users WHERE email = $1";
     const InsQuery="INSERT INTO users(id,email,password,name,avatar,admin,from_google) VALUES((SELECT (MAX(ID) + 1) FROM users),$1,$2,$3,'',false,$4) RETURNING id,name,admin";
    db.query(Query,[email], function (err,res){
         if(err){
@@ -43,12 +43,17 @@ exports.validateDataRegister = function(name,email,password,fromGoogle,handleVal
                     });
                 });
             }else {
-                var data={
-                    id:res.rows[0].id,
-                    name:res.rows[0].name,
-                    admin:res.rows[0].admin
-                };
-                handleValidateData(true,data);
+                if(fromGoogle){
+                    var data={
+                        id:res.rows[0].id,
+                        name:res.rows[0].name,
+                        admin:res.rows[0].admin
+                    };
+                    handleValidateData(true,data);
+                }else{
+                    handleValidateData(false,null);
+                }
+
             }
         }
     });
