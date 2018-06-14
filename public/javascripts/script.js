@@ -6,6 +6,9 @@ const $allGames = $('#all-games');
 const submitRegisterButton = $('#submit-register');
 
 var auth2;
+window.onbeforeunload = function(e){
+    gapi.auth2.getAuthInstance().signOut();
+};
 $(function () {
 
     gapi.load('auth2', function() {
