@@ -6,7 +6,7 @@ var tabUserId=[];
 //list users
 redisClient = redis.createClient(24809, "ec2-52-2-220-105.compute-1.amazonaws.com");
 redisClient.auth("pecd503719e99ee58515c3d6ebb6e1394fd2f6acda5921e38afa798fb2c32d168", function() {console.log("Connected!");});
-redisClient.flushall();
+//redisClient.flushall();
 exports.getClient=function(){return redisClient};
 exports.serverConnect=function(){
     redisClient.del('listaSocketow');
