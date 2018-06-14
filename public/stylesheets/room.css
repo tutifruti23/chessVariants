@@ -2,11 +2,13 @@
     min-height:75vh;
     height:75vh;
     max-height:75vh;
+
 }
 #output{
     background: white;
     height: 100%;
     overflow-y:scroll;
+    border-radius: 5px;
 }
 #message{
 
@@ -52,4 +54,10 @@
 #availableUsers{
     display:none;
 
+}
+.col-switch{
+    padding: 0px !important;
+}
+.btn-switch{
+    margin: 0 !important;
 }

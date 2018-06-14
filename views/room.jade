@@ -11,24 +11,31 @@ block content
     div(ng-app='myApp')#conRoom.container
         //#witaj Witaj #{name}
         div.row
-            div.col-9
-                button.btn.btn-primary#newGame Nowy Stół
-                select#idGame
-                    each item in gamesList
-                        option(value='#{item[0]}') #{item[1]}
-                select#timeGame
-                    option(value='30') 1/2 min
-                    option(value='60') 1 min
-                    option(value='180' selected="selected") 3 min
-                    option(value='300') 5 min
-                    option(value='600') 10 min
-            div.col-3
-                button.btn.btn-info#changeToUsersList
-                    |Users
-                button.btn.btn-info.disabled#changeToChat
-                    |Chat
+            div.col-8
+                div.row
+                    div.col-2
+                        button.btn.btn-primary#newGame Nowy Stół
+                    div.col-4
+                        select#idGame.form-control
+                            each item in gamesList
+                                option(value='#{item[0]}') #{item[1]}
+                    div.col-3
+                        select#timeGame.form-control
+                            option(value='30') 1/2 min
+                            option(value='60') 1 min
+                            option(value='180' selected="selected") 3 min
+                            option(value='300') 5 min
+                            option(value='600') 10 min
+            div.col-4
+                div.row
+                    div.col-6.col-switch
+                        button.btn.btn-primary.btn-block.btn-switch#changeToUsersList
+                            |Users
+                    div.col-6.col-switch
+                        button.btn.btn-primary.btn-block.disabled.btn-switch#changeToChat
+                            |Chat
         div.row
-            div#tables(ng-controller='tableList').col-9
+            div#tables(ng-controller='tableList').col-8
                 table#tableTable.col-12
                     tbody.col-12
                         tr.tableListItem(ng-repeat="table in tableList").container
@@ -44,7 +51,7 @@ block content
                           tr(ng-repeat="user in listaUserow")
                             td
                               | {{user.userName}}
-            div#chat.col-3.container
+            div#chat.col-4.container
                 #output
                 #chatutil
                     .input-group.mb-3
