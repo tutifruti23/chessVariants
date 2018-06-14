@@ -94,8 +94,8 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail()); */// This is null if the 'email' scope is not present.
     let idToken = googleUser.getAuthResponse().id_token;
     $.post('/login/googleLogin', {idToken:idToken}, function (response) {
-        alert("zalogowalem sie");
-        window.location.replace("../room");
+        if(response)
+            window.location.replace("../room");
     });
 
 }
