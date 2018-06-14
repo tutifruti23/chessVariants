@@ -57,7 +57,9 @@ exports.loginGoogle = async function(token, callback){
       name:name,
       email:email,
     };
+    console.log("to inna data"+data);
     loginModel.validateDataRegister(data.name,data.email,' ',true, function (result,data) {
+        console.log("a co trafia tu"+data);
         jwt.sign({
                 id: userid,
                 name: name,
