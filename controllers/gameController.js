@@ -514,5 +514,62 @@ exports.gameController={
 
 
         }
+    },
+    '7':{
+        startPosition:function(){
+            var Chess = require('chess.js').Chess;
+            var chess = new Chess();
+
+
+            return chess.fen()+"&1";},
+        startInfo:function(){return "";},
+        firstUsersOnMove:function(){return [0]},
+        numberOfPlayers:function(){return 2},
+        playerTimeout:function(position,i,callback){
+
+            callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
+        },
+        makeMove:function(moves,nrPlayer,data,callback){
+            var Chess = require('chess.js').Chess;
+            var chess = new Chess();
+            var tab=data.split("&");
+            var position=tab[0];
+            var numMoves=tab[1];
+            chess.load(position);
+            var turn=chess.turn()=='w'?0:1;
+            if(turn==nrPlayer&&moves.length<=numMoves){
+                var gOver=0;
+                var info="";
+                for(var i=0;i<moves.length;i++){
+                    var m=chess.move(moves[i]);
+                    if(m!=null){
+                        gOver=chess.game_over()==true?1:0;
+                        if(gOver==1||chess.in_check()||i==moves.length-1)break;
+                        var tempFen=chess.fen().split(" ");
+                        tempFen[1]=tempFen[1]=='w'?'b':'w';
+                        tempFen[tempFen.length-3]="-";
+                        var newFen="";
+                        for(var j=0;j<tempFen.length;j++){
+                            if(j>0)
+                                newFen+=" ";
+                            newFen+=tempFen[j];
+                        }
+                        chess.load(newFen);
+                    }else {
+                        callback({change: false});
+                        return;
+                    }
+                }
+                turn=chess.turn()=='w'?0:1;
+                numMoves++;
+                callback({change:true,position:chess.fen()+"&"+numMoves,gameOver:gOver,info:info,playersOnMove:[turn]});
+            }
+            else{
+
+                callback({change:false});
+            }
+
+
+        }
     }
 };
