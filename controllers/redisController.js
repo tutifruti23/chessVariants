@@ -4,8 +4,8 @@ var tabSockets=[];
 var tabUserName=[];
 var tabUserId=[];
 //list users
-redisClient = redis.createClient(24809, "ec2-52-2-220-105.compute-1.amazonaws.com");
-redisClient.auth("pecd503719e99ee58515c3d6ebb6e1394fd2f6acda5921e38afa798fb2c32d168", function() {console.log("Connected!");});
+redisClient = redis.createClient(30009, "ec2-52-2-220-105.compute-1.amazonaws.com");
+redisClient.auth("pe497f18503e4b067235a9714e92837a51beb4d9748c6fb4be76e2dc3b07726c9", function() {console.log("Connected!");});
 //redisClient.flushall();
 exports.getClient=function(){return redisClient};
 exports.serverConnect=function(){
