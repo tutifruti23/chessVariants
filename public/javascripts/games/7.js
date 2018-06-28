@@ -138,7 +138,7 @@ var game={
             "<div id=\"board1\" style=\"width: 400px\"></div>\n" +
             "<p>Status: <span id=\"status\"></span></p>\n" +
             "<p>FEN: <span id=\"fen\"></span></p>\n" +
-            "<p>PGN: <span id=\"pgn\"></span></p>";
+            "<p>Number of moves: <span id=\"pgn\"></span></p>";
     },rotateBoardForPlayer:function(numberOfSeat){
         if(numberOfSeat==1){
             board.orientation('black');

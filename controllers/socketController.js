@@ -7,6 +7,9 @@ const returnController = function(io){
             io.sockets.emit("chat",data);
 
         });
+        socket.on("chatTable",function(data){
+            io.sockets.emit("chat"+data['idTable'],data);
+        });
 
         socket.on("newUser",function(data){
             if(data.userName!=''){

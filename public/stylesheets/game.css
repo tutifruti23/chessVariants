@@ -1,0 +1,43 @@
+playersCon{
+    height:30vh;
+
+}
+#chatGame{
+    height: 40vh;
+    margin-bottom: 3vh;
+
+}
+.linia{
+
+
+}
+#infoGame{
+    margin: 0px !important;
+    padding: 0px !important;
+
+}
+.button{
+
+    margin: 0px !important;
+    padding: 0px !important;
+}
+#output{
+    background-color: azure;
+    height: 90%;
+    overflow-y:auto;
+    border-radius: 5px;
+    padding-left: 2px;
+}
+#message{
+    background-color: azure;
+    opacity: 0.5;
+
+}
+#chatutil{
+    width:100%;
+
+}
+#stol {
+    height:85vh;
+
+}

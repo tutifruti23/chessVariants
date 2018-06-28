@@ -22,6 +22,26 @@ window.addEventListener('load',function(){
     socket.on('deleteTable',function(idTable){
         deleteTable(idTable);
     });
+    //chat
+    var message=document.getElementById("message");
+    var output=document.getElementById("output");
+    $(document).keypress(function (e) {
+        if (e.which == 13) {
+            if(message.value!=""){
+                socket.emit("chatTable",{
+                    userName:userName,
+                    message: message.value,
+                    idTable:idTable
+                });
+            }
+            message.value="";
+        }
+    });
+    socket.on("chat"+idTable,function (data) {
+        output.innerHTML+="<p><strong>"+ data.userName+"</strong>: "+data.message+"</p>";
+    })
+
+
 
 });
 function deleteTable(idTable){

@@ -2,6 +2,7 @@ extends layout
 
 block content
     link(href='https://fonts.googleapis.com/css?family=Abril Fatface', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/game.css')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js')
     script.
@@ -12,32 +13,41 @@ block content
     script(src='javascripts/chessboard.js')
     script(src='javascripts/chess.js')
     script(src='#{script}')
-    div.container(ng-app='myApp' ng-controller='table')
+    div.container#stol(ng-app='myApp' ng-controller='table')
 
         .row
-            .col-9.center
-                h1.gameTitle {{table.gameName}}
-                h2.gameTitle.status {{status()}}
-                h2 {{table.info}}
-                #plansza
-            .col-3.br
-                div.playerSit(ng-repeat="i in range(0,table.numberOfPlayers)")
-                    div.d-flex.justify-content-center
-                        div.p-2.player {{table['seat'+i]==0?'empty':table['seatName'+i]}}
-                        div.p-2.playerReady(style="background-color:{{isReady(i)}};height:10px;width:10px;border:1px solid black")
-                    div.d-flex.justify-content-center
-                        button.btn.btn-primary.btn-md(ng-click='seat(i)')
-                            |Usiądź
-                        button.btn.btn-success.btn-md(ng-click='playerIsReady(i)')
-                            |Start
-                        button.btn.btn-danger.btn-md(ng-click='standUp()')
-                            |Wstań
-                    div.timer.col-12
-                        |{{playerTimer(i)}}
-                    hr
+            .col-10.center
+                div.d-flex.justify-content-center
+                    h1.p-2.gameTitle {{table.gameName}}
+                div.d-flex.justify-content-center
+                    h2.gameTitle.status.p-2 {{status()}}
+                    h2.p-2 {{table.info}}
+                div.d-flex.justify-content-center
+                    #plansza.p-2
+            .col-2#infoGame
+                div#playersCon
+                    div.container.playerSit(ng-repeat="i in range(0,table.numberOfPlayers)")
+                        div.d-flex.justify-content-center
+                            div.p-2.player {{table['seat'+i]==0?'empty':table['seatName'+i]}}
+                            div.p-2.playerReady(style="background-color:{{isReady(i)}};height:10px;width:10px;border:1px solid black")
+                        div.row.linia
+                            div.col-6.button(style="display:{{table['seat'+i]==0?'initial':'none'}}")
+                                div.btn.btn-primary.btn-sm.btn-block(ng-click='seat(i)')
+                                    |Usiądź
+                            div.col-6.button(style="display:{{table['seat'+i]==0?'none':'initial'}}")
+                                div.btn.btn-danger.btn-sm.btn-block(ng-click='standUp()')
+                                    | Wstań
+                            div.col-6.button
+                                div.btn.btn-success.btn-sm.btn-block(ng-click='playerIsReady(i)')
+                                    |Start
 
+                        div.timer.col-12
+                            |{{playerTimer(i)}}
+                        hr
 
-        .row
-            .col-9
-                h3.center.result.gameTitle Rezultat gry:
-            .col-3
+                div#chatGame
+                     #output
+                     #chatutil
+                         .input-group.mb-3
+                              input#message.form-control(type='text', placeholder='message')
+                              
