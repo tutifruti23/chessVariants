@@ -97,7 +97,7 @@ var updateStatus = function() {
     }
 
     statusEl.html(status);
-    fenEl.html(g.fen());
+
     pgnEl.html(numMoves);
 };
 
@@ -129,7 +129,7 @@ var game={
     load:function(data){
         var tab=data.split("&");
         numMoves=tab[1];
-
+        fenEl.html(tab[2]);
         g.load(tab[0]);
         board.position(g.fen());
         updateStatus();
@@ -137,7 +137,7 @@ var game={
         return "<link rel=\"stylesheet\" href=\"stylesheets/chessboard.css\" />" +
             "<div id=\"board1\" style=\"width: 400px\"></div>\n" +
             "<p>Status: <span id=\"status\"></span></p>\n" +
-            "<p>FEN: <span id=\"fen\"></span></p>\n" +
+            "<p>Notation: <span id=\"fen\"></span></p>\n" +
             "<p>Number of moves: <span id=\"pgn\"></span></p>";
     },rotateBoardForPlayer:function(numberOfSeat){
         if(numberOfSeat==1){

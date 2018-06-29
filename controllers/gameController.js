@@ -517,7 +517,7 @@ exports.gameController={
             var chess = new Chess();
 
 
-            return chess.fen()+"&1";},
+            return chess.fen()+"&1&";},
         startInfo:function(){return "";},
         firstUsersOnMove:function(){return [0]},
         numberOfPlayers:function(){return 2},
@@ -531,6 +531,7 @@ exports.gameController={
             var tab=data.split("&");
             var position=tab[0];
             var numMoves=tab[1];
+            var notation=tab[2]+numMoves+". ";
             chess.load(position);
             var turn=chess.turn()=='w'?0:1;
             if(turn==nrPlayer&&moves.length<=numMoves){
@@ -538,6 +539,7 @@ exports.gameController={
                 var info="";
                 for(var i=0;i<moves.length;i++){
                     var m=chess.move(moves[i]);
+                    notation+=(chess.history()[0])+' ';
                     if(m!=null){
                         gOver=chess.game_over()==true?1:0;
                         if(gOver==1||chess.in_check()||i==moves.length-1)break;
@@ -558,7 +560,7 @@ exports.gameController={
                 }
                 turn=chess.turn()=='w'?0:1;
                 numMoves++;
-                callback({change:true,position:chess.fen()+"&"+numMoves,gameOver:gOver,info:info,playersOnMove:[turn]});
+                callback({change:true,position:chess.fen()+"&"+numMoves+'&'+notation,gameOver:gOver,info:info,playersOnMove:[turn]});
             }
             else{
 

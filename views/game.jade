@@ -16,7 +16,7 @@ block content
     div.container#stol(ng-app='myApp' ng-controller='table')
 
         .row
-            .col-10.center
+            .col-xs-12.col-sm-10.center
                 div.d-flex.justify-content-center
                     h1.p-2.gameTitle {{table.gameName}}
                 div.d-flex.justify-content-center
@@ -31,13 +31,13 @@ block content
                             div.p-2.player {{table['seat'+i]==0?'empty':table['seatName'+i]}}
                             div.p-2.playerReady(style="background-color:{{isReady(i)}};height:10px;width:10px;border:1px solid black")
                         div.row.linia
-                            div.col-6.button(style="display:{{table['seat'+i]==0?'initial':'none'}}")
+                            div.col-md-6.col-sm-12.button(style="display:{{table['seat'+i]==0?'initial':'none'}}")
                                 div.btn.btn-primary.btn-sm.btn-block(ng-click='seat(i)')
                                     |Usiądź
-                            div.col-6.button(style="display:{{table['seat'+i]==0?'none':'initial'}}")
+                            div.col-md-6.col-sm-12.button(style="display:{{table['seat'+i]==0?'none':'initial'}}")
                                 div.btn.btn-danger.btn-sm.btn-block(ng-click='standUp()')
                                     | Wstań
-                            div.col-6.button
+                            div.col-md-6.col-sm-12.button
                                 div.btn.btn-success.btn-sm.btn-block(ng-click='playerIsReady(i)')
                                     |Start
 
@@ -50,4 +50,3 @@ block content
                      #chatutil
                          .input-group.mb-3
                               input#message.form-control(type='text', placeholder='message')
-                              
