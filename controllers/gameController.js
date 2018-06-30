@@ -569,5 +569,72 @@ exports.gameController={
 
 
         }
+    },
+    '8':{
+        startPosition:function(){
+            var Chess = require('chess.js').Chess;
+            var chess = new Chess();
+
+
+            return chess.fen()+'&'+0+'&';},
+        startInfo:function(){return "";},
+        firstUsersOnMove:function(){return [0]},
+        numberOfPlayers:function(){return 4},
+        playerTimeout:function(position,i,callback){
+
+            callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
+        },
+        makeMove:function(move,nrPlayer,data,callback){
+            var Chess = require('chess.js').Chess;
+            var chess = new Chess();
+            var tab=data.split("&");
+            var playerOnMove=tab[1];
+            var position=tab[0];
+            chess.load(position);
+            if(playerOnMove%2==0){
+                var turn=chess.turn()=='w'?0:2;
+                var chosenPiece=move['piece'];
+                console.log(chosenPiece);
+                if(turn==nrPlayer){
+                    var possibleMoves=chess.moves({verbose:true})
+                    for(var i=0;i<possibleMoves.length;i++){
+
+                        if(possibleMoves[i]['piece']==chosenPiece){
+                            turn++;
+                            var res=chess.fen()+'&'+turn+'&'+chosenPiece;
+                            callback({change:true,position:res,gameOver:0,info:'',playersOnMove:[turn]});
+                            console.log('wynik');
+                            return;
+                        }
+                    }
+
+                }
+                console.log("jestem tu");
+                callback({change:false});
+
+            }
+            else{
+               var pieceToMove= tab[2];
+               var turn=chess.turn()=='w'?1:3;
+               console.log(move);
+               if(nrPlayer==turn){
+                   if(chess.get(move['from'])['type']==pieceToMove){
+                       var m=chess.move(move);
+                       console.log(m);
+                       if(m!=null){
+                           var info="";
+                           var gOver=chess.game_over()?1:0;
+                           turn=turn==1?2:0;
+                           var res=chess.fen()+'&'+turn+'&';
+                           console.log(res);
+                           callback({change:true,position:res,gameOver:gOver,info:info,playersOnMove:[turn]});
+                           return;
+                       }
+                   }
+               }
+               callback({change:false});
+
+            }
+        }
     }
 };

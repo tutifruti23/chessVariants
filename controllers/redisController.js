@@ -4,9 +4,10 @@ var tabSockets=[];
 var tabUserName=[];
 var tabUserId=[];
 //list users
-redisClient = redis.createClient(30009, "ec2-52-2-220-105.compute-1.amazonaws.com");
-redisClient.auth("pe497f18503e4b067235a9714e92837a51beb4d9748c6fb4be76e2dc3b07726c9", function() {console.log("Connected!");});
-//redisClient.flushall();
+redisClient=redis.createClient();
+//redisClient = redis.createClient(30009, "ec2-52-2-220-105.compute-1.amazonaws.com");
+//redisClient.auth("pe497f18503e4b067235a9714e92837a51beb4d9748c6fb4be76e2dc3b07726c9", function() {console.log("Connected!");});
+redisClient.flushall();
 exports.getClient=function(){return redisClient};
 exports.serverConnect=function(){
     redisClient.del('listaSocketow');

@@ -16,7 +16,7 @@ playersCon{
     padding: 0px !important;
 
 }
-.button{
+.button,.noPaddingNoMargin{
 
     margin: 0px !important;
     padding: 0px !important;
