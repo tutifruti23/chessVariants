@@ -140,7 +140,7 @@ var game={
             });
         }
         var $pieceImage=$('#pieceImage');
-        if(tab[2]!=''){
+        if(tab[2]!=''&&tab[2]!= null){
             var color=g.turn();
             var piece=tab[2].toUpperCase();
 
