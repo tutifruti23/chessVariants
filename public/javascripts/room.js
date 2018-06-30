@@ -103,6 +103,9 @@ window.addEventListener("load",function(){
     });
     socket.on("chat",function (data) {
         output.innerHTML+="<p><strong>"+ data.userName+"</strong>: "+data.message+"</p>";
+        var height= output.scrollHeight;
+        output.scrollTo(0, height);
+
     })
     //nowa gra
     document.getElementById("newGame").addEventListener("click",function(){
