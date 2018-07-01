@@ -2,7 +2,9 @@ var board,
     g = new Chess(),
     statusEl,
     fenEl,
-    pgnEl;
+    pgnEl
+    ;
+
 
 // do not pick up pieces if the game is over
 // only pick up pieces for the side to move
@@ -31,6 +33,7 @@ var onDrop = function(source, target) {
         to: target,
         promotion: 'q' // NOTE: always promote to a queen for example simplicity
     };
+
     var move = g.move(m);
 
     // illegal move
@@ -39,7 +42,6 @@ var onDrop = function(source, target) {
         game.move(move);
         updateStatus();
     }
-
 };
 
 // update the board position after the piece snap
