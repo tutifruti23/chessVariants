@@ -9,8 +9,6 @@ router.get('/', function(req, res, next) {
             redisController.getMapValue(req.query.id,'numberOfPlayers',function(numberOfPlayers){
 
                     gameData.gameConfig(idGame, function (config) {
-                        console.log(config);
-                        console.log(config.config.script);
                         var jsFile=config.config.script;
                         res.render('game', {
                             title: 'Gra ....',

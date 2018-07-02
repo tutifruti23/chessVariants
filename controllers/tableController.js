@@ -380,7 +380,7 @@ function initClocks(idTable,time,count){
         timers[idTable]=[];
         time=time*1000;
         for(var i=0;i<count;i++){
-            timers[idTable][i]=timerInstance(time,idTable,i+1);
+            timers[idTable][i]=timerInstance(time,idTable,i);
             redisController.setMapKey(idTable,'seatTime'+i,time);
         }
     }else{
