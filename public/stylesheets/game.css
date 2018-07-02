@@ -1,14 +1,9 @@
-playersCon{
-    height:30vh;
 
-}
-#chatGame{
-    height: 40vh;
-    margin-bottom: 3vh;
 
-}
-.linia{
+.button,.noPaddingNoMargin{
 
+    margin: 0px !important;
+    padding: 0px !important;
 
 }
 #infoGame{
@@ -16,10 +11,52 @@ playersCon{
     padding: 0px !important;
 
 }
-.button,.noPaddingNoMargin{
+    #playersCon{
+        height:44vh;
+        font-size:2.5vh;
+        margin:1vh;
+    }
+        .playerSit{
 
-    margin: 0px !important;
-    padding: 0px !important;
+        }
+            .playerName{
+
+
+            }
+                .player{
+
+                    padding: 0px !important;
+                    padding-right: 4px !important;
+                    font-weight: bolder;
+                }
+                .playerReady{
+                    height:1vh;
+                    width:1vh;
+                    border:1px solid black;
+                    border-radius:3px;
+                }
+            .buttons{
+
+            }
+                .button{
+
+                }
+            .timer {
+
+                text-align: center;
+                font-weight: bolder;
+            }
+
+
+
+
+
+
+
+#chatGame{
+    height: 37vh;
+
+
 }
 #output{
     background-color: azure;
@@ -40,4 +77,41 @@ playersCon{
 #stol {
     height:85vh;
 
+}
+
+
+/*game*/
+
+.points{
+    font-size:20px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.btn-away{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    white-space: normal;
+
+}
+.btn-away:hover{
+    box-shadow: 0 0 15px #b71d1d;
+
+}
+.btn-ready:hover{
+    box-shadow: 0 0 4px #25751e;
+}
+.gameTitle{
+    font-family: 'Abril Fatface';
+    padding: 0px !important;
+    margin: 0px !important;
+    padding-bottom: 5px !important;
+}
+.status{
+    padding: 0px !important;
+    color: silver;
+    font-style: italic;
+    font-size: 15px;
 }

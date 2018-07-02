@@ -111,10 +111,7 @@ input[type~=text] {
   border: silver 1px solid;
   border-radius: 20px;
 }
-.player{
-  font-size: 170%;
-  font-weight: bolder;
-}
+
 points{
   font-weight: 900;
 }
@@ -162,51 +159,4 @@ table{
 }
 
 
-/*game*/
-.timer{
-  margin-top:20px;
-  font-size:20px;
-  text-align: center;
-  font-weight: bolder;
-}
-.points{
-  margin-top:20px;
-  font-size:20px;
-  text-align: center;
-  font-weight: bolder;
-}
-
-.btn-away{
-  margin-top:20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  white-space: normal;
-
-}
-.btn-away:hover{
-  box-shadow: 0 0 15px #b71d1d;
-
-}
-
-
-.btn-ready:hover{
-  box-shadow: 0 0 4px #25751e;
-}
-.gameTitle{
-  font-family: 'Abril Fatface';
-}
-.row{
-  margin-top: 10px;
-}
-.status{
-  color: silver;
-  font-style: italic;
-  font-size: 15px;
-}
-.playerReady{
-  margin-top:5%;
-  border-radius:5px;
-}
 
