@@ -482,8 +482,8 @@ exports.gameController={
         firstUsersOnMove:function(){return [0]},
         numberOfPlayers:function(){return 2},
         playerTimeout:function(position,i,callback){
-
-            callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
+            const info=(i==0?"Białe":"Czarne")+"przekroczyły czas na grę";
+            callback({change:true,position:position,gameOver:1,info:info,playersOnMove:[]});
         },
         makeMove:function(move,nrPlayer,position,callback){
             var Chess = require('chess.js').Chess;
@@ -522,8 +522,8 @@ exports.gameController={
         firstUsersOnMove:function(){return [0]},
         numberOfPlayers:function(){return 2},
         playerTimeout:function(position,i,callback){
-
-            callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
+            const info=(i==0?"Białe":"Czarne")+"przekroczyły czas na grę";
+            callback({change:true,position:position,gameOver:1,info:info,playersOnMove:[]});
         },
         makeMove:function(moves,nrPlayer,data,callback){
             var Chess = require('chess.js').Chess;
@@ -581,8 +581,8 @@ exports.gameController={
         firstUsersOnMove:function(){return [0]},
         numberOfPlayers:function(){return 4},
         playerTimeout:function(position,i,callback){
-
-            callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
+            const info=(i<2?"Białe":"Czarne")+"przekroczyły czas na grę";
+            callback({change:true,position:position,gameOver:1,info:info,playersOnMove:[]});
         },
         makeMove:function(move,nrPlayer,data,callback){
             var Chess = require('chess.js').Chess;
@@ -647,8 +647,8 @@ exports.gameController={
         firstUsersOnMove:function(){return [0]},
         numberOfPlayers:function(){return 2},
         playerTimeout:function(position,i,callback){
-
-            callback({change:true,position:position,gameOver:1,info:'Koniec gry',playersOnMove:[]});
+            const info=(i==0?"Białe":"Czarne")+"przekroczyły czas na grę";
+            callback({change:true,position:position,gameOver:1,info:info,playersOnMove:[]});
         },
         makeMove:function(move,nrPlayer,position,callback){
             var Chess = require('chess.js').Chess;
