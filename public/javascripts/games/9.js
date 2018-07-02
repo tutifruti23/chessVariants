@@ -287,10 +287,16 @@ var game={
         updateStatus();
     },layout:function(){
         return "<link rel=\"stylesheet\" href=\"stylesheets/chessboard.css\" />" +
-            "<div id=\"board1\" style=\"width: 400px\"></div>\n" +
-            "<p>Status: <span id=\"status\"></span></p>\n" +
-            "<p>FEN: <span id=\"fen\"></span></p>\n" +
-            "<p>PGN: <span id=\"pgn\"></span></p>";
+            "<div class='container'>" +
+            "   <div class='row'>" +
+                "<div id='board1' style='width: 400px'></div>" +
+                "</div>" +
+            "   <div class='row'>" +
+                        "<p>Status: <span id='status'></span></p>" +
+            "   </div>" +
+            "</div>";
+
+            ;
     },rotateBoardForPlayer:function(numberOfSeat){
         if(numberOfSeat==1){
             board.orientation('black');
